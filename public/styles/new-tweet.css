@@ -4,6 +4,41 @@ section {
   align-items: center;
   flex-direction: column;
 }
+img.avatar {
+  width: 50px;
+  height: 45px;
+}
+
+section.old-tweets {
+  width: 100%;
+  border-style: solid;
+  margin-top: 20px;
+}
+
+header.tweets {
+  margin: 0.7em;
+}
+
+section.old-tweets:hover {
+box-shadow: 10px 20px gray;
+opacity: 1;
+}
+
+article {
+  width: 100%;
+  padding-left: 10px;
+  height: 100%;
+}
+
+footer{
+  font-size: initial;
+  border-style: solid;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  margin: 2%;
+}
+
 input {
   font-family: 'Bungee', cursive;
   background-color: blue;
@@ -33,4 +68,21 @@ textarea:focus {
   border-bottom: 2px solid;
   background: #e6e1d859;
   outline: none
+}
+
+a.handle{
+  float: right;
+  margin-right: 5px;
+  display: none;
+  opacity: 0.5;
+}
+
+.old-tweets:hover a.handle{
+  display: block
+  
+}
+
+section.created-tweets {
+width: 90%;
+padding-top: 0px;
 }
