@@ -1,0 +1,36 @@
+section {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+input {
+  font-family: 'Bungee', cursive;
+  background-color: blue;
+  color: white;
+  padding-top: 0px;
+  margin-top: 5px;
+  width: 30%;
+}
+span.counter {
+  font-family: 'Bungee', cursive;
+  margin-left: 55%;
+}
+
+textarea {
+  border: none;
+  border-bottom: 2px solid;
+  background: transparent;
+  margin: 0px;
+  width: 450px;
+  height: 75px;
+  width: 100%;
+  background-color: transparent;
+}
+
+textarea:focus {
+  border: none;
+  border-bottom: 2px solid;
+  background: #e6e1d859;
+  outline: none
+}

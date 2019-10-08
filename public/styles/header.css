@@ -1,0 +1,11 @@
+header {
+  height: 400px;
+  width: 100%;
+  background-color: lightcoral;
+  color: white;
+  padding-top: 25px;
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
