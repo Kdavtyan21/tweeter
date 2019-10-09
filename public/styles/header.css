@@ -9,3 +9,76 @@ header.name {
   align-items: center;
   flex-direction: column;
 }
+
+div { 
+  width: max-content;
+  margin: 0;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+span.Write {
+  font-size: medium
+}
+
+span.paragraph {
+font-size: small
+}
+
+button {
+  margin-top: 50px;
+  float: right;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+
+.arrow-down {
+  width: 50px;
+  height: 50px;
+  background: lightcoral;
+  position: relative;
+}
+
+.arrow-down.active {
+  background: blue;
+}
+
+.arrow-down:before, .arrow-down:after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 5px;
+  background: white;
+  position: absolute;
+  top: 20px;
+  transition: transform .5s;
+}
+
+.arrow-down:before {
+  right: 21px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transform: rotate(45deg);
+}
+
+.arrow-down:after {
+  right: 10px;
+  transform: rotate(-45deg);
+}
+
+.arrow-down.active:before {
+  transform: rotate(-45deg);
+}
+
+.arrow-down.active:after {
+  transform: rotate(45deg);
+}

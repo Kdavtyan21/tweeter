@@ -3,33 +3,17 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-const tweet = [  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
+
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
+const tweet = []
 
 const renderTweets = function(tweets) {
   for (const tweet of tweets) {
-    console.log(createTweetElement(tweet));
     $('.html-tweets').prepend(createTweetElement(tweet));
   }
 }
@@ -40,15 +24,63 @@ const createTweetElement = function(tweet) {
   <section class=old-tweets>
   <section class=created-tweets>
   <article>
-      <img class="avatar" src=${tweet.user.avatars}><a>${tweet.user.name}</a><a class="handle">${tweet.user.handle}</a>
-  <header class="tweets">${tweet.content.text}</header>
-  <footer>${tweet.created_at}</footer>
+  <img class="avatar" src=${escape(tweet.user.avatars)}><a>${escape(tweet.user.name)}</a><a class="handle">${escape(tweet.user.handle)}</a>
+  <header class="tweets">${escape(tweet.content.text)}</header>
+  <footer>${escape(tweet.created_at)}</footer>
   </article>
-</section>
-</section>`;
+  </section>
+  </section>`;
   return $tweet;
 };
 
-$(document).ready(function() {
-renderTweets(tweet);
+
+$(function() {
+  const $button = $('.formTweet');
+  $button.on('submit', function (event) {
+    $('.errors').slideUp();
+    let $input = $('#tweetText').serialize()
+    let $value = $input.split("=")[1]
+    event.preventDefault()
+    if ($value.length > 140) {
+      $('.errors').text('The text is too long')
+      $('.errors').slideDown()
+    } else if (!$value) {
+      $('.errors').text('Write something please')
+      $('.errors').slideDown()
+    } else {
+    $.ajax('/tweets', { 
+      method: 'POST', 
+      data: $input,
+      success: function() {
+        loadTweets()
+      }
+    })
+  }
+  });
 });
+
+const loadTweets = function () {
+  $.ajax('/tweets', { method: 'GET', 
+    success: function(data) {
+      renderTweets(data)
+    }
+  })
+};
+
+
+$(document).ready(function() {
+  loadTweets()
+  toggle()
+  $(".new-tweet").hide()
+});
+
+
+
+
+const safeHTML = escape(`<script>${''}</script>`)
+
+const toggle = function () {
+  $(".arrow-down").on("click", function ( ) {
+    $(".new-tweet").slideToggle()
+  })
+}
