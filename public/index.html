@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
 
@@ -18,6 +19,7 @@
    
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
+    <link rel="stylesheet" href="/styles/sizes-desktop.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
@@ -29,9 +31,9 @@
   </head>
 
   <body>
-
+    <main class="main">
     <!-- Top nav bar (fixed) -->
-    <nav>
+    <nav class="menu">
         <span>tweeter</span>
         <div><span class="Write">Write </span><span class="paragraph">a new tweet</span><div class="arrow-down" onclick="this.classList.toggle('active')"></div></div>
     </nav>
@@ -44,9 +46,9 @@
             <h2>Karen Davtyan</h2>
         </div>
     </header>
-    <div class="errors"></div>
     <!-- Page-specific (main) content here -->
     <main class="container">
+        <div class="errors"></div>
         <section class="new-tweet">
             <form class="formTweet" method="POST" action="/tweets">
               <textarea id='tweetText'name="text" placeholder="What are you humming about?"></textarea>
@@ -56,6 +58,7 @@
           </section>
         <section class="html-tweets">
         </section>
+    </main>
     </main>
   </body>
 </html>

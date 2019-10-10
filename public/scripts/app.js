@@ -52,6 +52,7 @@ $(function() {
       method: 'POST', 
       data: $input,
       success: function() {
+        
         loadTweets()
       }
     })
@@ -62,6 +63,7 @@ $(function() {
 const loadTweets = function () {
   $.ajax('/tweets', { method: 'GET', 
     success: function(data) {
+      $(".html-tweets").empty()
       renderTweets(data)
     }
   })
