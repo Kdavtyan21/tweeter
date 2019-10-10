@@ -21,5 +21,5 @@ Here you can make your own tweets come true in a matter of seconds all you have 
 
 ## Final Product
 
-!["screenshot of URLs page"]()
-!["screenshot of Edit page"]()
+!["screenshot of Desktop view"](https://github.com/Kdavtyan21/tweeter/blob/master/docs/Desktop%20view.png)
+!["screenshot of tablet view"](https://github.com/Kdavtyan21/tweeter/blob/master/docs/Screen%20Shot%202019-10-10%20at%204.04.32%20PM.png)
