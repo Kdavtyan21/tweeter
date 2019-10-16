@@ -26,31 +26,22 @@ const createTweetElement = function(tweet) {
   <article>
   <img class="avatar" src=${escape(tweet.user.avatars)}><a>${escape(tweet.user.name)}</a><a class="handle">${escape(tweet.user.handle)}</a>
   <header class="tweets">${escape(tweet.content.text)}</header>
-  <footer>${formatAMPM()}</footer>
+  <footer>${moment(new Date(tweet.created_at)).fromNow()}</footer>
   </article>
   </section>
   </section>`;
   return $tweet;
 };
 
-function formatAMPM() {
-  let d = new Date(),
-    minutes = d.getMinutes().toString().length ===1 ? '0' + d.getMinutes() : d.getMinutes(),
-    hours = d.getHours().toString().length === 1 ? '0' + d.getHours() : d.getHours(),
-    ampm = d.getHours() >= 12 ? 'pm' : 'am',
-    months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-    days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  return days[d.getDay()] + ' ' + months[d.getMonth()] + ' ' + d.getDate() + ' ' + d.getFullYear() + ' ' + hours + ':' + minutes + ampm;
-}
 
 
 $(function() {
-  const $button = $('.formTweet');
+  const $button = $('.form-tweet');
   $button.on('submit', function (event) {
+    event.preventDefault()
     $('.errors').slideUp();
     let $input = $('#tweetText').serialize()
     let $value = $input.split("=")[1]
-    event.preventDefault()
     if ($value.length > 140) {
       $('.errors').text('The text is too long')
       $('.errors').slideDown()
@@ -61,8 +52,8 @@ $(function() {
     $.ajax('/tweets', { 
       method: 'POST', 
       data: $input,
-      success: function() {
-        loadTweets()
+      success: function(data) {
+        renderTweets([data])
         $("#tweetText").val("")
         $(".counter").text(140)
       }

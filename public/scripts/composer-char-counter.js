@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('.new-tweet textarea').keyup(function() {
     const number = 140;
-    const counter = $(this).next().next();
+    const counter = $(this).parent().find('span.counter');
     const length = $(this).val().length
     if (number - length < 0) {
       counter.css('color', 'red')

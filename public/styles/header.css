@@ -10,7 +10,7 @@ header.name {
   flex-direction: column;
 }
 
-div { 
+div.header { 
   width: max-content;
   margin: 0;
   float: right;
